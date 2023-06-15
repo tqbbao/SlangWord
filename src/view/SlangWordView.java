@@ -5,12 +5,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import static java.awt.image.ImageObserver.HEIGHT;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Level;
@@ -31,61 +39,139 @@ import javax.swing.border.EmptyBorder;
  */
 public class SlangWordView extends JFrame {
 
-    Map<String, String> dictionary = new TreeMap<String, String>();
+    TreeMap<String, String> dictionary = new TreeMap<String, String>();
     public static final String FILENAME = "slang.txt";
     public static final String FILENAME1 = "slang1.txt";
+    public static final String FILENAME2 = "history.dat";
 
     public void loadData() {
-        FileReader fr = null;
-        BufferedReader br = null;
+
+        FileInputStream fin = null;
+        ObjectInputStream ois = null;
 
         try {
-            fr = new FileReader(FILENAME1);
-            br = new BufferedReader(fr);
-            System.out.println(br.readLine());
-            String line = null;
-            while ((line = br.readLine()) != null) {
-                if (line.isEmpty()) {
-                    continue;
-                }
-                String[] tmp = line.split("`");
-                if (tmp.length == 2) {
-                    dictionary.put(tmp[0], tmp[1]);
-                }
-                //System.out.println(line);
-            }
+            fin = new FileInputStream(FILENAME2);
+            ois = new ObjectInputStream(fin);
+            dictionary = (TreeMap<String, String>) ois.readObject();
+            
+
+            System.out.println("kppppp");
+            
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+
+            //
+            System.out.println("kjkjlkjlk");
+            FileReader fr = null;
+            BufferedReader br = null;
+            try {
+                fr = new FileReader(FILENAME1);
+                br = new BufferedReader(fr);
+                System.out.println(br.readLine());
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    if (line.isEmpty()) {
+                        continue;
+                    }
+                    String[] tmp = line.split("`");
+                    if (tmp.length == 2) {
+                        dictionary.put(tmp[0], tmp[1]);
+                    }
+                    //System.out.println(line);
+                }
+
+                //Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (FileNotFoundException ex1) {
+                Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex1);
+            } catch (IOException ex1) {
+                Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex1);
+            } finally {
+                if (fr != null) {
+                    try {
+                        fr.close();
+                    } catch (IOException ex1) {
+                        Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                }
+                if (br != null) {
+                    try {
+                        br.close();
+                    } catch (IOException ex1) {
+                        Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                }
+            }
         } catch (IOException ex) {
+            System.out.println("2");
+            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (fr != null) {
+            if (fin != null) {
                 try {
-                    fr.close();
+                    fin.close();
                 } catch (IOException ex) {
                     Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if (br != null) {
+            if (ois != null) {
                 try {
-                    br.close();
+                    ois.close();
                 } catch (IOException ex) {
                     Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
+
+//        FileReader fr = null;
+//        BufferedReader br = null;
+//
+//        try {
+//            fr = new FileReader(FILENAME1);
+//            br = new BufferedReader(fr);
+//            System.out.println(br.readLine());
+//            String line = null;
+//            while ((line = br.readLine()) != null) {
+//                if (line.isEmpty()) {
+//                    continue;
+//                }
+//                String[] tmp = line.split("`");
+//                if (tmp.length == 2) {
+//                    dictionary.put(tmp[0], tmp[1]);
+//                }
+//                //System.out.println(line);
+//            }
+//
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (fr != null) {
+//                try {
+//                    fr.close();
+//                } catch (IOException ex) {
+//                    Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//            if (br != null) {
+//                try {
+//                    br.close();
+//                } catch (IOException ex) {
+//                    Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
     }
 
     public SlangWordView() {
         loadData();
-        
-        for (Map.Entry<String, String> s : dictionary.entrySet()){
-            System.out.println(s.getKey() + " : " + s.getValue()); 
+
+        for (Map.Entry<String, String> s : dictionary.entrySet()) {
+            System.out.println(s.getKey() + " : " + s.getValue());
             //System.out.print(s.getValue()); 
         }
-        
-        
+
         this.setTitle("MainFrame");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(1000, 600);
@@ -142,7 +228,14 @@ public class SlangWordView extends JFrame {
 
         JButton findButton = new JButton("Find");
         findButton.setSize(WIDTH, HEIGHT);
-
+        findButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String ans = dictionary.get(findTextField.getText());
+                System.out.println(ans);
+            }
+            
+        });
         panel2.add(findTextField);
         panel2.add(Box.createHorizontalStrut(5));
 
@@ -169,6 +262,48 @@ public class SlangWordView extends JFrame {
 
         this.add(jPanel_top, BorderLayout.NORTH);
         this.add(jPanel_center, BorderLayout.CENTER);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                windowClosingEventHandler();
+            }
+        });
+
+    }
+
+    //Khi thoat chuong trinh thi se luu dictionary vao lai file
+    public void windowClosingEventHandler() {
+        System.out.println("exit exit");
+        FileOutputStream fout = null;
+        ObjectOutputStream oos = null;
+
+        try {
+            fout = new FileOutputStream(FILENAME2);
+            oos = new ObjectOutputStream(fout);
+
+            oos.writeObject(dictionary);
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (fout != null) {
+                try {
+                    fout.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
 
     }
 
