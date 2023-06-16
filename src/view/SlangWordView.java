@@ -2,7 +2,6 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -21,11 +20,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Box;
-import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -40,11 +37,12 @@ import javax.swing.border.EmptyBorder;
  */
 public class SlangWordView extends JFrame {
 
-    public static HashMap<String, String> dictionary = new HashMap<String, String>();
-    public static final String FILENAME = "slang.txt";
+    public static HashMap<String, String> dictionary = new HashMap<String, String>();;
+    //public static final String FILENAME = "slang.txt";
     public static final String FILENAME1 = "slang1.txt";
-    public static final String FILENAME2 = "history.dat";
+    public static final String FILENAME2 = "h.dat";
     JLabel slangLabel;
+
     public void loadData() {
 
         FileInputStream fin = null;
@@ -57,7 +55,6 @@ public class SlangWordView extends JFrame {
             
 
             System.out.println("kppppp");
-            
 
         } catch (FileNotFoundException ex) {
 
@@ -199,16 +196,15 @@ public class SlangWordView extends JFrame {
         JLabel titleLabel = new JLabel("S L A N G       W O R D S", JLabel.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 50));
         titleLabel.setForeground(new Color(60, 115, 99));
-        
+
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.setTabPlacement(JTabbedPane.LEFT);
         tabbedPane.setFont(new Font("Arial", Font.BOLD, 25));
-        
-        
 
         //
         SearchSlangWordView p1 = new SearchSlangWordView(dictionary);
-        
+        SearchDefinitionView p2 = new SearchDefinitionView(dictionary);
+
         JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10;
         panel1 = new JPanel();
         panel1.setBackground(Color.red);
@@ -226,12 +222,6 @@ public class SlangWordView extends JFrame {
         panel10 = new JPanel();
 
         //
-        
-        
-        
-        
-        
-        
         JPanel t = new JPanel();
         JPanel b = new JPanel();
         t.setLayout(new FlowLayout());
@@ -240,7 +230,7 @@ public class SlangWordView extends JFrame {
         b.setBackground(Color.green);
         slangLabel = new JLabel();
         slangLabel.setFont(new Font("Arial", Font.PLAIN, 30));
-        
+
         JTextField findTextField = new JTextField(30);
         Font fo = new Font("Serif", Font.BOLD, 20);
 
@@ -256,33 +246,29 @@ public class SlangWordView extends JFrame {
                 slangLabel.setText(ans);
                 System.out.println(ans);
             }
-            
+
         });
-        panel2.add(findTextField);
-        panel2.add(Box.createHorizontalStrut(5));
-        
-        panel2.add(findButton);
-        
+
         t.add(findTextField);
         t.add(Box.createHorizontalStrut(5));
         t.add(findButton);
         b.add(slangLabel);
-        
+
         panel2.add(t, BorderLayout.NORTH);
         panel2.add(b, BorderLayout.CENTER);
 
         tabbedPane.setBackground(new Color(184, 217, 208));
-        tabbedPane.setForeground(new Color(0, 0,0));
+        tabbedPane.setForeground(new Color(0, 0, 0));
         tabbedPane.addTab("Tìm kiếm theo slangword", p1);
-        tabbedPane.addTab("Tìm kiếm theo definition", panel2);
+        tabbedPane.addTab("Tìm kiếm theo definition", p2);
         tabbedPane.addTab("History", panel3);
-        tabbedPane.addTab("Add a slang", panel4);
-        tabbedPane.addTab("Edit a slang", panel5);
-        tabbedPane.addTab("Delete a slang", panel6);
-        tabbedPane.addTab("Reset dictionary", panel7);
-        tabbedPane.addTab("On this day slang", panel8);
-        tabbedPane.addTab("Guess meaning", panel9);
-        tabbedPane.addTab("Guess slang", panel10);
+        tabbedPane.addTab("Sample", panel4);
+        tabbedPane.addTab("Sample", panel5);
+        tabbedPane.addTab("Sample", panel6);
+        tabbedPane.addTab("Sample", panel7);
+        tabbedPane.addTab("Sample", panel8);
+        tabbedPane.addTab("Sample", panel9);
+        tabbedPane.addTab("Sample", panel10);
 
         //tabbedPane.setEnabledAt(2, false);
         //tabbedPane.setEnabledAt(5, false);
