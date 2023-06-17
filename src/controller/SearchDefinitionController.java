@@ -3,6 +3,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 import view.SearchDefinitionView;
 import view.SlangWordView;
@@ -22,26 +24,45 @@ public class SearchDefinitionController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
-        System.out.println(src);
         timkiemdefinition(this.rootPanel.dictionary, this.panel.findTextField.getText());
     }
     
     public void timkiemdefinition(HashMap<String, String> dictionary, String str){
         Vector<String> results = new Vector<>();
 
-        dictionary.forEach((slang, meaning) -> {
-            if (meaning.contains(str))
-                results.add(slang);
-        });
+//        dictionary.forEach((slang, meaning) -> {
+//            if (meaning.contains(str))
+//                results.add(slang);
+//        });
+        
+        for (Map.Entry<String, String> s : dictionary.entrySet()){
+            //System.out.println(s.getKey() + " --- " + s.getValue()); 
+            if (s.getValue().contains(str))
+                results.add(s.getKey());
+           
+        }
+        
 
         if (results.isEmpty()) {
             this.panel.tuKhoa.setText("No slang!");
             this.panel.yNghiaTu.setText("Try another slang!");
         } else{
-            System.out.println("List dang co gia tri");
-            System.out.println(results);
+            //System.out.println("List dang co gia tri");
+            //System.out.println(results);
             this.panel.resultList.setListData(results);
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
     }

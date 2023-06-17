@@ -1,6 +1,7 @@
 package view;
 
 import controller.SearchDefinitionController;
+import controller.SearchSlangWordController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;

@@ -20,6 +20,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Box;
@@ -30,6 +31,8 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -37,10 +40,14 @@ import javax.swing.border.EmptyBorder;
  */
 public class SlangWordView extends JFrame {
 
-    public static HashMap<String, String> dictionary = new HashMap<String, String>();;
+    public static HashMap<String, String> dictionary = new HashMap<String, String>();
+
+    public static Vector<String> historySlangs = new Vector<>();
     //public static final String FILENAME = "slang.txt";
     public static final String FILENAME1 = "slang1.txt";
-    public static final String FILENAME2 = "h.dat";
+    public static final String FILENAME_TUDIEN = "tudien.dat";
+    public static final String FILENAME_LICHSU = "lichsu.dat";
+
     JLabel slangLabel;
 
     public void loadData() {
@@ -49,17 +56,12 @@ public class SlangWordView extends JFrame {
         ObjectInputStream ois = null;
 
         try {
-            fin = new FileInputStream(FILENAME2);
+            fin = new FileInputStream(FILENAME_TUDIEN);
             ois = new ObjectInputStream(fin);
             dictionary = (HashMap<String, String>) ois.readObject();
-            
-
-            System.out.println("kppppp");
 
         } catch (FileNotFoundException ex) {
 
-            //
-            System.out.println("kjkjlkjlk");
             FileReader fr = null;
             BufferedReader br = null;
             try {
@@ -75,7 +77,6 @@ public class SlangWordView extends JFrame {
                     if (tmp.length == 2) {
                         dictionary.put(tmp[0], tmp[1]);
                     }
-                    //System.out.println(line);
                 }
 
                 //Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,55 +122,47 @@ public class SlangWordView extends JFrame {
             }
         }
 
-//        FileReader fr = null;
-//        BufferedReader br = null;
-//
-//        try {
-//            fr = new FileReader(FILENAME1);
-//            br = new BufferedReader(fr);
-//            System.out.println(br.readLine());
-//            String line = null;
-//            while ((line = br.readLine()) != null) {
-//                if (line.isEmpty()) {
-//                    continue;
-//                }
-//                String[] tmp = line.split("`");
-//                if (tmp.length == 2) {
-//                    dictionary.put(tmp[0], tmp[1]);
-//                }
-//                //System.out.println(line);
-//            }
-//
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            if (fr != null) {
-//                try {
-//                    fr.close();
-//                } catch (IOException ex) {
-//                    Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//            if (br != null) {
-//                try {
-//                    br.close();
-//                } catch (IOException ex) {
-//                    Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        }
+    }
+
+    public void loadHistory() {
+        FileInputStream fin = null;
+        ObjectInputStream ois = null;
+        try {
+            fin = new FileInputStream(FILENAME_LICHSU);
+            ois = new ObjectInputStream(fin);
+            historySlangs = (Vector<String>) ois.readObject();
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (fin != null) {
+                try {
+                    fin.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
     }
 
     public SlangWordView() {
         loadData();
-
-        for (Map.Entry<String, String> s : dictionary.entrySet()) {
-            System.out.println(s.getKey() + " : " + s.getValue());
-            //System.out.print(s.getValue()); 
-        }
-
+        loadHistory();
+//        for (Map.Entry<String, String> s : dictionary.entrySet()) {
+                //            System.out.println(s.getKey() + " : " + s.getValue());
+                //        }
         this.setTitle("MainFrame");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(1100, 600);
@@ -204,6 +197,7 @@ public class SlangWordView extends JFrame {
         //
         SearchSlangWordView p1 = new SearchSlangWordView(dictionary);
         SearchDefinitionView p2 = new SearchDefinitionView(dictionary);
+        HistoryView p3 = new HistoryView(historySlangs);
 
         JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10;
         panel1 = new JPanel();
@@ -261,7 +255,7 @@ public class SlangWordView extends JFrame {
         tabbedPane.setForeground(new Color(0, 0, 0));
         tabbedPane.addTab("Tìm kiếm theo slangword", p1);
         tabbedPane.addTab("Tìm kiếm theo definition", p2);
-        tabbedPane.addTab("History", panel3);
+        tabbedPane.addTab("History", p3);
         tabbedPane.addTab("Sample", panel4);
         tabbedPane.addTab("Sample", panel5);
         tabbedPane.addTab("Sample", panel6);
@@ -269,6 +263,13 @@ public class SlangWordView extends JFrame {
         tabbedPane.addTab("Sample", panel8);
         tabbedPane.addTab("Sample", panel9);
         tabbedPane.addTab("Sample", panel10);
+
+        tabbedPane.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                System.out.println("Tab: " + tabbedPane.getSelectedIndex());
+                System.out.println(historySlangs);
+            }
+        });
 
         //tabbedPane.setEnabledAt(2, false);
         //tabbedPane.setEnabledAt(5, false);
@@ -288,14 +289,13 @@ public class SlangWordView extends JFrame {
 
     }
 
+    //luu history
     //Khi thoat chuong trinh thi se luu dictionary vao lai file
     public void windowClosingEventHandler() {
-        System.out.println("exit exit");
         FileOutputStream fout = null;
         ObjectOutputStream oos = null;
-
         try {
-            fout = new FileOutputStream(FILENAME2);
+            fout = new FileOutputStream(FILENAME_TUDIEN);
             oos = new ObjectOutputStream(fout);
 
             oos.writeObject(dictionary);
@@ -315,6 +315,36 @@ public class SlangWordView extends JFrame {
             if (oos != null) {
                 try {
                     oos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        //
+        FileOutputStream fout_lichsu = null;
+        ObjectOutputStream oos_lichsu = null;
+        try {
+            fout_lichsu = new FileOutputStream(FILENAME_LICHSU);
+            oos_lichsu = new ObjectOutputStream(fout_lichsu);
+
+            oos_lichsu.writeObject(historySlangs);
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (fout_lichsu != null) {
+                try {
+                    fout_lichsu.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (oos_lichsu != null) {
+                try {
+                    oos_lichsu.close();
                 } catch (IOException ex) {
                     Logger.getLogger(SlangWordView.class.getName()).log(Level.SEVERE, null, ex);
                 }

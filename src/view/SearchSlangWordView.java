@@ -62,6 +62,7 @@ public class SearchSlangWordView extends JPanel {
 
         yNghiaTu = new JLabel();
         yNghiaTu.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+        yNghiaTu.setFont(new Font("Arial", Font.BOLD, 15));
 
         JPanel center = new JPanel();
         center.setBackground(new Color(184, 217, 208));
