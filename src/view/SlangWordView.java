@@ -44,7 +44,7 @@ public class SlangWordView extends JFrame {
 
     public static Vector<String> historySlangs = new Vector<>();
     //public static final String FILENAME = "slang.txt";
-    public static final String FILENAME1 = "slang1.txt";
+    public static final String FILENAME1 = "slang.txt";
     public static final String FILENAME_TUDIEN = "tudien.dat";
     public static final String FILENAME_LICHSU = "lichsu.dat";
 
@@ -198,6 +198,8 @@ public class SlangWordView extends JFrame {
         SearchSlangWordView p1 = new SearchSlangWordView(dictionary);
         SearchDefinitionView p2 = new SearchDefinitionView(dictionary);
         HistoryView p3 = new HistoryView(historySlangs);
+        
+        CRUDView p5 = new CRUDView(dictionary);
 
         JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10;
         panel1 = new JPanel();
@@ -255,9 +257,9 @@ public class SlangWordView extends JFrame {
         tabbedPane.setForeground(new Color(0, 0, 0));
         tabbedPane.addTab("Tìm kiếm theo slangword", p1);
         tabbedPane.addTab("Tìm kiếm theo definition", p2);
-        tabbedPane.addTab("History", p3);
-        tabbedPane.addTab("Sample", panel4);
-        tabbedPane.addTab("Sample", panel5);
+        tabbedPane.addTab("Lịch sử tìm kiếm", p3);
+        tabbedPane.addTab("Thêm-Xóa-Sửa slang word", panel4);
+        tabbedPane.addTab("Sample", p5);
         tabbedPane.addTab("Sample", panel6);
         tabbedPane.addTab("Sample", panel7);
         tabbedPane.addTab("Sample", panel8);
