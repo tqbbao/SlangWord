@@ -200,6 +200,7 @@ public class SlangWordView extends JFrame {
         HistoryView p3 = new HistoryView(historySlangs);
         
         CRUDView p5 = new CRUDView(dictionary);
+        ResetSlangView p7 = new ResetSlangView(dictionary);
 
         JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10;
         panel1 = new JPanel();
@@ -258,13 +259,13 @@ public class SlangWordView extends JFrame {
         tabbedPane.addTab("Tìm kiếm theo slangword", p1);
         tabbedPane.addTab("Tìm kiếm theo definition", p2);
         tabbedPane.addTab("Lịch sử tìm kiếm", p3);
-        tabbedPane.addTab("Thêm-Xóa-Sửa slang word", panel4);
-        tabbedPane.addTab("Sample", p5);
-        tabbedPane.addTab("Sample", panel6);
-        tabbedPane.addTab("Sample", panel7);
-        tabbedPane.addTab("Sample", panel8);
-        tabbedPane.addTab("Sample", panel9);
-        tabbedPane.addTab("Sample", panel10);
+        tabbedPane.addTab("--------------", panel4);
+        tabbedPane.addTab("Edit-Delete", p5);
+        tabbedPane.addTab("Reset Slang", p7);
+        tabbedPane.addTab("--------------", panel7);
+        tabbedPane.addTab("--------------", panel8);
+        tabbedPane.addTab("--------------", panel9);
+        tabbedPane.addTab("--------------", panel10);
 
         tabbedPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
