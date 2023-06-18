@@ -51,11 +51,11 @@ public class RandomSlangView extends JPanel {
 
         JPanel a = new JPanel();
         a.setLayout(new FlowLayout(FlowLayout.CENTER));
-        tuKhoa = new JLabel("Slang: ");
+        tuKhoa = new JLabel("Slang");
         JPanel b = new JPanel();
         b.setLayout(new FlowLayout(FlowLayout.CENTER));
-        yNghiaTu = new JLabel("Meaning: ");
-        tuKhoa.setFont(new Font("Arial", Font.BOLD, 30));
+        yNghiaTu = new JLabel("Meaning");
+        tuKhoa.setFont(new Font("Arial", Font.BOLD, 50));
         yNghiaTu.setFont(new Font("Arial", Font.BOLD, 30));
         tuKhoa.setForeground(new Color(60, 115, 99));
 
