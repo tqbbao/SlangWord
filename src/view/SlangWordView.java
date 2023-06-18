@@ -165,7 +165,7 @@ public class SlangWordView extends JFrame {
                 //        }
         this.setTitle("MainFrame");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setSize(1100, 600);
+        this.setSize(1200, 700);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
 
@@ -202,8 +202,9 @@ public class SlangWordView extends JFrame {
         CRUDView p5 = new CRUDView(dictionary);
         ResetSlangView p7 = new ResetSlangView(dictionary);
         QuizzSlangView p9 = new QuizzSlangView(dictionary);
+        QuizzDefinitionView p10 = new QuizzDefinitionView(dictionary);
         
-        
+
 
         JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10;
         panel1 = new JPanel();
@@ -262,13 +263,13 @@ public class SlangWordView extends JFrame {
         tabbedPane.addTab("Tìm kiếm theo slangword", p1);
         tabbedPane.addTab("Tìm kiếm theo definition", p2);
         tabbedPane.addTab("Lịch sử tìm kiếm", p3);
-        tabbedPane.addTab("--------------", panel4);
+        tabbedPane.addTab("Add", panel4);
         tabbedPane.addTab("Edit-Delete", p5);
         tabbedPane.addTab("Reset Slang", p7);
         tabbedPane.addTab("Ramdom 1 SlangWord", panel7);
         tabbedPane.addTab("Quizz Slang", p9);
-        tabbedPane.addTab("--------------", panel9);
-        tabbedPane.addTab("--------------", panel10);
+        tabbedPane.addTab("Quizz Definition", p10);
+        
 
         tabbedPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
