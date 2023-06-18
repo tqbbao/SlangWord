@@ -47,9 +47,6 @@ public class SearchDefinitionView extends JPanel {
         findButton.setFont(new Font("Arial", Font.BOLD, 25));
         findButton.setFocusable(false);
         findButton.setForeground(Color.LIGHT_GRAY);
-        
-        
-        
 
         JPanel top = new JPanel();
         top.setLayout(new FlowLayout());
@@ -63,23 +60,12 @@ public class SearchDefinitionView extends JPanel {
         resultList = new JList<>();
         resultList.setFont(new Font("Arial", Font.BOLD, 25));
         scrollPane = new JScrollPane(resultList);
-        
+        scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        
         JPanel resultPanel = new JPanel();
         resultPanel.setLayout(new BorderLayout());
-        resultPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        resultPanel.add(new JLabel("Kết quả tìm kiếm:"), BorderLayout.PAGE_START);
+        resultPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Kết quả tìm kiếm:"));
         resultPanel.add(scrollPane, BorderLayout.CENTER);
-        resultPanel.setBackground(new Color(184, 217, 208));
-        
-        
-        
-        
-        
-        
-        
-        
 
         // Slang Panel
         tuKhoa = new JLabel();
@@ -104,6 +90,6 @@ public class SearchDefinitionView extends JPanel {
 
         this.add(top, BorderLayout.PAGE_START);
         this.add(resultPanel, BorderLayout.CENTER);
-        this.add(center, BorderLayout.PAGE_END);
+        //this.add(center, BorderLayout.PAGE_END);
     }
 }

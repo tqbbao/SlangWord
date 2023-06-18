@@ -27,36 +27,7 @@ public class HistoryView extends JPanel {
     public HistoryView(Vector<String> historySlangs) {
         this.setBackground(new Color(232, 241, 253));
 
-        tuKhoa = new JLabel("sdfsdfsdfsfsdfsdfsdf");
-        tuKhoa.setFont(new Font("Arial", Font.PLAIN, 30));
-        tuKhoa.setForeground(Color.BLUE);
-        tuKhoa.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-        yNghiaTu = new JLabel("Safsdfsdfsdfsadfsdfsdf");
-        yNghiaTu.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
-
-        JPanel top = new JPanel();
-        top.setBackground(new Color(184, 217, 208));
-        top.setLayout(new BoxLayout(top, BoxLayout.Y_AXIS));
-        top.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-        top.add(tuKhoa);
-        top.add(yNghiaTu);
-
-        //
-        JPanel center = new JPanel();
-        center.setLayout(new BorderLayout());
-        center.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Những từ bạn đã tìm kiếm:"));
-
-        historyList = new JList<>(historySlangs);
-        historyList.setFont(new Font("Arial", Font.BOLD, 25));
-
-        scrollPane = new JScrollPane(historyList);
-
-        scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        scrollPane.setBackground(new Color(184, 217, 208));
-        center.add(scrollPane, BorderLayout.CENTER);
-        center.setBackground(new Color(184, 217, 208));
+        
         ///////////////////////////////////////////////////////////////
         JLabel khoiPhuc = new JLabel("LỊCH SỬ TÌM KIẾM");
         khoiPhuc.setFont(new Font("Arial", Font.BOLD, 30));
