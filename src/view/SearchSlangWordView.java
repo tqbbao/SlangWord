@@ -54,30 +54,44 @@ public class SearchSlangWordView extends JPanel {
         top.add(Box.createHorizontalStrut(5));
         top.add(findButton);
 
-        // Slang Panel
-        tuKhoa = new JLabel();
-        tuKhoa.setFont(new Font("Arial", Font.PLAIN, 30));
-        tuKhoa.setForeground(Color.BLUE);
-        tuKhoa.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        //
+        JPanel bot = new JPanel();
+        bot.setLayout(new BorderLayout());
+        bot.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Kết quả tìm kiếm:"));
 
-        yNghiaTu = new JLabel();
-        yNghiaTu.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
-        yNghiaTu.setFont(new Font("Arial", Font.BOLD, 15));
+        JPanel a = new JPanel();
+        a.setLayout(new FlowLayout(FlowLayout.CENTER));
+        tuKhoa = new JLabel("Slang");
+        JPanel b = new JPanel();
+        b.setLayout(new FlowLayout(FlowLayout.CENTER));
+        yNghiaTu = new JLabel("Meaning");
+        tuKhoa.setFont(new Font("Arial", Font.BOLD, 50));
+        yNghiaTu.setFont(new Font("Arial", Font.BOLD, 30));
+        tuKhoa.setForeground(new Color(60, 115, 99));
 
-        JPanel center = new JPanel();
-        center.setBackground(new Color(184, 217, 208));
-        center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));
-        center.setBorder(new EmptyBorder(5, 5, 5, 5));
+        a.add(tuKhoa);
+        b.add(yNghiaTu);
 
-        center.add(tuKhoa);
-        center.add(yNghiaTu);
+        JPanel meaningPanel = new JPanel();
+        meaningPanel.setLayout(new BoxLayout(meaningPanel, BoxLayout.Y_AXIS));
+        meaningPanel.setBorder(new EmptyBorder(30, 50, 30, 50));
 
+        meaningPanel.add(a);
+        meaningPanel.add(Box.createVerticalStrut(15));
+        meaningPanel.add(b);
+
+        bot.add(meaningPanel, BorderLayout.PAGE_START);
+        
+        
+        
+        
+        
         // Settings and Add components to panel
         setBorder(new EmptyBorder(5, 5, 5, 5));
         setLayout(new BorderLayout());
 
         this.add(top, BorderLayout.PAGE_START);
-        this.add(center, BorderLayout.CENTER);
+        this.add(bot, BorderLayout.CENTER);
     }
 
 }

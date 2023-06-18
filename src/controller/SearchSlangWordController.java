@@ -37,7 +37,7 @@ public class SearchSlangWordController implements ActionListener {
         
         String ans = dictionary.get(str);
         this.panel.tuKhoa.setText(ans != null ? str : "Không tìm thấy (slang word)!");
-        this.panel.yNghiaTu.setText(ans != null ? "=====> " + ans : "Hãy thử tìm kiếm 1 từ khác (slang word)!");
+        this.panel.yNghiaTu.setText(ans != null ? ans : "Hãy thử tìm kiếm 1 từ khác (slang word)!");
         if (ans != null) {
             System.out.println("chuan bi");
             if (!this.rootPanel.historySlangs.contains(str)){
