@@ -19,6 +19,14 @@ import javax.swing.border.EmptyBorder;
  */
 public class QuizzSlangView extends JPanel {
 
+    public  JButton ansA;
+    public  JButton ansB;
+    public  JButton ansC;
+    public  JButton ansD;
+    public JLabel questionLabel;
+    public JButton beginButton;
+    public int traLoi;
+
     public QuizzSlangView(HashMap<String, String> dictionary) {
         this.setBackground(new Color(232, 241, 253));
         ActionListener ac = new QuizzSlangController(this);
@@ -29,11 +37,11 @@ public class QuizzSlangView extends JPanel {
 
         JPanel sample = new JPanel();
         sample.setLayout(new BorderLayout());
-        sample.setBackground(Color.BLUE);
+        //sample.setBackground(Color.BLUE);
         //sample.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         JPanel tmp = new JPanel();
-        JButton beginButton = new JButton("BEGIN QUIZZ");
+        beginButton = new JButton("BEGIN QUIZZ");
         beginButton.setBackground(new Color(60, 115, 99));
         beginButton.setFont(new Font("Arial", Font.BOLD, 25));
         beginButton.setFocusable(false);
@@ -49,7 +57,7 @@ public class QuizzSlangView extends JPanel {
         center.setBorder(new EmptyBorder(10, 10, 10, 10));
         center.setBackground(new Color(184, 217, 208));
 
-        JLabel questionLabel = new JLabel("KHÔI PHỤC DỮ LIỆU VỀ BAN ĐẦU", JLabel.CENTER);
+        questionLabel = new JLabel("NHẤN BEGIN ĐỂ BẮT ĐẦU", JLabel.CENTER);
         questionLabel.setFont(new Font("Arial", Font.BOLD, 40));
         questionLabel.setForeground(Color.BLUE);
         center.add(questionLabel, BorderLayout.CENTER);
@@ -62,10 +70,23 @@ public class QuizzSlangView extends JPanel {
         bot.setLayout(new GridLayout(2, 2, 10, 10));
         bot.setBorder(new EmptyBorder(20, 20, 20, 20));
 
-        JButton ansA = new JButton("");
-        JButton ansB = new JButton("");
-        JButton ansC = new JButton("");
-        JButton ansD = new JButton("");
+        ansA = new JButton("");
+        ansB = new JButton("");
+        ansC = new JButton("");
+        ansD = new JButton("");
+        ansA.setBackground(Color.lightGray);
+        ansB.setBackground(Color.lightGray);
+        ansC.setBackground(Color.lightGray);
+        ansD.setBackground(Color.lightGray);
+        ansA.setFocusable(false);
+        ansB.setFocusable(false);
+        ansC.setFocusable(false);
+        ansD.setFocusable(false);
+        ansA.setFont(new Font("Arial", Font.BOLD, 15));
+        ansB.setFont(new Font("Arial", Font.BOLD, 15));
+        ansC.setFont(new Font("Arial", Font.BOLD, 15));
+        ansD.setFont(new Font("Arial", Font.BOLD, 15));
+        
         ansA.setActionCommand("Ans_A");
         ansA.addActionListener(ac);
         ansB.setActionCommand("Ans_B");
@@ -88,7 +109,15 @@ public class QuizzSlangView extends JPanel {
 
     public void khoiTaoGiaTriChoButton(HashMap<String, String> dictionary) {
         Random random = new Random();
+        int answer = random.nextInt(0, 4);
+        System.out.println("random: " + answer);
+
+//            Set<String> keySet = this.rootPanel.dictionary.keySet();
+//            for (String i : keySet) {
+//                System.out.println(i + " : " + this.rootPanel.dictionary.get(i));
+//            }
+        int index = random.nextInt(dictionary.size());
+        System.out.println(index);
 
     }
 }
-
