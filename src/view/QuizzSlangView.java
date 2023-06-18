@@ -104,20 +104,8 @@ public class QuizzSlangView extends JPanel {
         setLayout(new BorderLayout());
         this.add(top, BorderLayout.PAGE_START);
         this.add(bot, BorderLayout.CENTER);
-        khoiTaoGiaTriChoButton(dictionary);
+        //khoiTaoGiaTriChoButton(dictionary);
     }
 
-    public void khoiTaoGiaTriChoButton(HashMap<String, String> dictionary) {
-        Random random = new Random();
-        int answer = random.nextInt(0, 4);
-        System.out.println("random: " + answer);
-
-//            Set<String> keySet = this.rootPanel.dictionary.keySet();
-//            for (String i : keySet) {
-//                System.out.println(i + " : " + this.rootPanel.dictionary.get(i));
-//            }
-        int index = random.nextInt(dictionary.size());
-        System.out.println(index);
-
-    }
+   
 }

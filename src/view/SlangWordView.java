@@ -199,8 +199,9 @@ public class SlangWordView extends JFrame {
         SearchDefinitionView p2 = new SearchDefinitionView(dictionary);
         HistoryView p3 = new HistoryView(historySlangs);
         
-        CRUDView p5 = new CRUDView(dictionary);
+        CRUDView p5_6 = new CRUDView(dictionary);
         ResetSlangView p7 = new ResetSlangView(dictionary);
+        RandomSlangView p8 = new RandomSlangView(dictionary);
         QuizzSlangView p9 = new QuizzSlangView(dictionary);
         QuizzDefinitionView p10 = new QuizzDefinitionView(dictionary);
         
@@ -264,9 +265,9 @@ public class SlangWordView extends JFrame {
         tabbedPane.addTab("Tìm kiếm theo definition", p2);
         tabbedPane.addTab("Lịch sử tìm kiếm", p3);
         tabbedPane.addTab("Add", panel4);
-        tabbedPane.addTab("Edit-Delete", p5);
+        tabbedPane.addTab("Edit-Delete", p5_6);
         tabbedPane.addTab("Reset Slang", p7);
-        tabbedPane.addTab("Ramdom 1 SlangWord", panel7);
+        tabbedPane.addTab("Ramdom 1 SlangWord", p8);
         tabbedPane.addTab("Quizz Slang", p9);
         tabbedPane.addTab("Quizz Definition", p10);
         
