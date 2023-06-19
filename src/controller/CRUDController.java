@@ -46,9 +46,15 @@ public class CRUDController implements ActionListener {
         if (this.panel.slangTextField.getText().equals("")) {
             JOptionPane.showMessageDialog(panel, "Please find a correct slang!");
         } else {
-            dictionary.put(this.panel.slangTextField.getText(), str);
-            refreshData();
-            JOptionPane.showMessageDialog(panel, "Slang edited!");
+            if (this.panel.meaningTextField.getText().equals("")) {
+                JOptionPane.showMessageDialog(panel, "Vui long khong de trong thong tin");
+
+            } else {
+                dictionary.put(this.panel.slangTextField.getText(), str);
+                refreshData();
+                JOptionPane.showMessageDialog(panel, "Slang edited!");
+
+            }
         }
     }
 

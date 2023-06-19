@@ -198,7 +198,7 @@ public class SlangWordView extends JFrame {
         SearchSlangWordView p1 = new SearchSlangWordView(dictionary);
         SearchDefinitionView p2 = new SearchDefinitionView(dictionary);
         HistoryView p3 = new HistoryView(historySlangs);
-        
+        AddSlangView p4 = new AddSlangView(dictionary);
         CRUDView p5_6 = new CRUDView(dictionary);
         ResetSlangView p7 = new ResetSlangView(dictionary);
         RandomSlangView p8 = new RandomSlangView(dictionary);
@@ -207,67 +207,15 @@ public class SlangWordView extends JFrame {
         
 
 
-        JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10;
-        panel1 = new JPanel();
-        panel1.setBackground(Color.red);
-        panel2 = new JPanel();
-        panel2.setBackground(Color.green);
-        panel2.setLayout(new BorderLayout());
-
-        panel3 = new JPanel();
-        panel4 = new JPanel();
-        panel5 = new JPanel();
-        panel6 = new JPanel();
-        panel7 = new JPanel();
-        panel8 = new JPanel();
-        panel9 = new JPanel();
-        panel10 = new JPanel();
-
-        //
-        JPanel t = new JPanel();
-        JPanel b = new JPanel();
-        t.setLayout(new FlowLayout());
-        t.setBackground(Color.blue);
-        b.setLayout(new BorderLayout());
-        b.setBackground(Color.green);
-        slangLabel = new JLabel();
-        slangLabel.setFont(new Font("Arial", Font.PLAIN, 30));
-
-        JTextField findTextField = new JTextField(30);
-        Font fo = new Font("Serif", Font.BOLD, 20);
-
-        // set the font of the textfield
-        findTextField.setFont(fo);
-
-        JButton findButton = new JButton("Find");
-        findButton.setSize(WIDTH, HEIGHT);
-        findButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String ans = dictionary.get(findTextField.getText());
-                slangLabel.setText(ans);
-                System.out.println(ans);
-            }
-
-        });
-
-        t.add(findTextField);
-        t.add(Box.createHorizontalStrut(5));
-        t.add(findButton);
-        b.add(slangLabel);
-
-        panel2.add(t, BorderLayout.NORTH);
-        panel2.add(b, BorderLayout.CENTER);
-
         tabbedPane.setBackground(new Color(184, 217, 208));
         tabbedPane.setForeground(new Color(0, 0, 0));
         tabbedPane.addTab("Tìm kiếm theo slangword", p1);
         tabbedPane.addTab("Tìm kiếm theo definition", p2);
         tabbedPane.addTab("Lịch sử tìm kiếm", p3);
-        tabbedPane.addTab("Add", panel4);
+        tabbedPane.addTab("Add", p4);
         tabbedPane.addTab("Edit-Delete", p5_6);
         tabbedPane.addTab("Reset Slang", p7);
-        tabbedPane.addTab("Ramdom 1 SlangWord", p8);
+        tabbedPane.addTab("Random 1 SlangWord", p8);
         tabbedPane.addTab("Quizz Slang", p9);
         tabbedPane.addTab("Quizz Definition", p10);
         
