@@ -31,7 +31,7 @@ public class ResetSlangView extends JPanel {
         a.setBackground(new Color(184, 217, 208));
 
         JLabel titleLabel = new JLabel("KHÔI PHỤC DỮ LIỆU BAN ĐẦU", JLabel.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 40));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 30));
         titleLabel.setForeground(new Color(60, 115, 99));
         a.add(titleLabel);
         //==================================

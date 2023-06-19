@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class QuizzDefinitionController implements ActionListener {
 
         String src = e.getActionCommand();
         if (src.equals("Ans_A")) {
-            System.out.println("Ans_A");
+            //System.out.println("Ans_A");
             if (this.panel.traLoi == keyA) {
                 this.panel.ansA.setBackground(Color.GREEN);
                 this.panel.ansA.setEnabled(false);
@@ -66,7 +67,7 @@ public class QuizzDefinitionController implements ActionListener {
             }
 
         } else if (src.equals("Ans_B")) {
-            System.out.println("Ans_B");
+            //System.out.println("Ans_B");
             if (this.panel.traLoi == keyB) {
                 this.panel.ansA.setEnabled(false);
 
@@ -100,7 +101,7 @@ public class QuizzDefinitionController implements ActionListener {
 
             //String sample = random.nextInt(tmp.toArray().length);
         } else if (src.equals("Ans_C")) {
-            System.out.println("Ans_C");
+            //System.out.println("Ans_C");
             if (this.panel.traLoi == keyC) {
                 this.panel.ansA.setEnabled(false);
 
@@ -133,7 +134,7 @@ public class QuizzDefinitionController implements ActionListener {
             }
 
         } else if (src.equals("Ans_D")) {
-            System.out.println("Ans_D");
+            //System.out.println("Ans_D");
             if (this.panel.traLoi == keyD) {
                 this.panel.ansA.setEnabled(false);
 
@@ -166,7 +167,7 @@ public class QuizzDefinitionController implements ActionListener {
             }
 
         } else if (src.equals("beginQuizz")) {
-            System.out.println("beginQuizz");
+            //System.out.println("beginQuizz");
             khoiTaoGiaTriChoButton(this.rootPanel.dictionary);
             this.panel.ansA.setEnabled(true);
             this.panel.ansB.setEnabled(true);
@@ -180,6 +181,8 @@ public class QuizzDefinitionController implements ActionListener {
             this.panel.ansB.setFocusable(false);
             this.panel.ansC.setFocusable(false);
             this.panel.ansD.setFocusable(false);
+            this.panel.questionLabel.setFont(new Font("Arial", Font.BOLD, 30));
+
         }
     }
 
@@ -191,7 +194,7 @@ public class QuizzDefinitionController implements ActionListener {
 
         Random random = new Random();
         int answer = random.nextInt(0, 4);
-        System.out.println("random: " + answer);
+        //System.out.println("random: " + answer);
         Set<String> tmp = this.rootPanel.dictionary.keySet();
         //String sample = new Random().nextInt(tmp);
 
@@ -201,7 +204,7 @@ public class QuizzDefinitionController implements ActionListener {
         int waittingAns = 0;
         do {
             int index = random.nextInt(dictionary.size());
-            System.out.println(index);
+            //System.out.println(index);
 
             if (quizzRandom.contains(index)) {
                 waittingAns = 0;
@@ -216,7 +219,7 @@ public class QuizzDefinitionController implements ActionListener {
             }
         } while (waittingAns != 1);
 
-        System.out.println(quizzRandom);
+        //System.out.println(quizzRandom);
 //
         Set<String> keySet = this.rootPanel.dictionary.keySet();
         List<String> keyList = new ArrayList<>(keySet);

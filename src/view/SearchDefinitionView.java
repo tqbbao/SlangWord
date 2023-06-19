@@ -40,7 +40,7 @@ public class SearchDefinitionView extends JPanel {
         // set the font of the textfield
         findTextField.setFont(fo);
 
-        findButton = new JButton("Find");
+        findButton = new JButton("TÌM KIẾM");
         findButton.setActionCommand("FindFind");
         findButton.addActionListener(ac);
         findButton.setBackground(new Color(60, 115, 99));

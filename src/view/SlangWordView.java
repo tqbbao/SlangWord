@@ -220,12 +220,12 @@ public class SlangWordView extends JFrame {
         tabbedPane.addTab("Quizz Definition", p10);
         
 
-        tabbedPane.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                System.out.println("Tab: " + tabbedPane.getSelectedIndex());
-                System.out.println(historySlangs);
-            }
-        });
+//        tabbedPane.addChangeListener(new ChangeListener() {
+//            public void stateChanged(ChangeEvent e) {
+//                System.out.println("Tab: " + tabbedPane.getSelectedIndex());
+//                System.out.println(historySlangs);
+//            }
+//        });
 
         //tabbedPane.setEnabledAt(2, false);
         //tabbedPane.setEnabledAt(5, false);
@@ -309,8 +309,8 @@ public class SlangWordView extends JFrame {
 
     }
 
-    public static void main(String[] args) {
-        new SlangWordView();
-    }
+//    public static void main(String[] args) {
+//        new SlangWordView();
+//    }
 
 }

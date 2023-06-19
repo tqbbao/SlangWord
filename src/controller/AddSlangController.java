@@ -39,7 +39,7 @@ public class AddSlangController implements ActionListener {
 
             } else {
 
-                String[] options = {"Overwrite it", "Only add meaning", "Cancel"};
+                String[] options = {"Overwrite", "Duplicate", "Cancel"};
                 int choice = JOptionPane.showOptionDialog(panel, "Slang is already existed!",
                         "Slang existed", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                         options, options[2]);

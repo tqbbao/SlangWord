@@ -56,7 +56,7 @@ public JButton ansA;
         c.setLayout(new FlowLayout(FlowLayout.CENTER));
         c.setBorder(new EmptyBorder(10, 10, 0, 10));
         questionLabel = new JLabel("NHẤN BEGIN ĐỂ BẮT ĐẦU", JLabel.CENTER);
-        questionLabel.setFont(new Font("Arial", Font.BOLD, 30));
+        questionLabel.setFont(new Font("Arial", Font.BOLD, 50));
         questionLabel.setForeground(new Color(60, 115, 99));
         c.add(questionLabel);
 
