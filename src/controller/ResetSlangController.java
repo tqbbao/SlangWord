@@ -42,7 +42,7 @@ public class ResetSlangController implements ActionListener {
 
     public void resetSlang(HashMap<String, String> dictionary, Vector<String> historySlangs) {
         int choice = JOptionPane.showConfirmDialog(panel,
-                "Do you really want to reset dictionary?",
+                "Bạn có muốn khôi phục lại từ điển",
                 "Reset dictionary",
                 JOptionPane.YES_NO_OPTION);
 

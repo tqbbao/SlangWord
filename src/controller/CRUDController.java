@@ -64,8 +64,7 @@ public class CRUDController implements ActionListener {
         if (ans != null) {
             int choice = JOptionPane.showConfirmDialog(
                     panel,
-                    "Slang: " + str + "\nMeanng: " + ans
-                    + "\nDo you really want to delete this slang?",
+                    "\nBạn có muốn xóa?",
                     "Delete slang",
                     JOptionPane.YES_NO_OPTION);
             if (choice == 0) {
@@ -81,7 +80,7 @@ public class CRUDController implements ActionListener {
 
     public void capnhathistoryList(String str) {
         this.rootPanel.historySlangs.remove(str);
-        System.out.println("historySlang sau khi xoa: " + this.rootPanel.historySlangs);
+        //System.out.println("historySlang sau khi xoa: " + this.rootPanel.historySlangs);
     }
 
     public void refreshData() {

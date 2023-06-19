@@ -47,11 +47,11 @@ public class AddSlangController implements ActionListener {
                 switch (choice) {
                     case 0 -> {
                         this.rootPanel.dictionary.put(this.panel.slangTextField.getText(), this.panel.meaningTextField.getText());
-                        JOptionPane.showMessageDialog(panel, "A slang has been overwritten!");
+                        JOptionPane.showMessageDialog(panel, "Overwritten!");
                     }
                     case 1 -> {
                         this.rootPanel.dictionary.put(this.panel.slangTextField.getText(), this.rootPanel.dictionary.get(this.panel.slangTextField.getText()) + "| " + this.panel.meaningTextField.getText());
-                        JOptionPane.showMessageDialog(panel, "A meaning has been added to a slang!");
+                        JOptionPane.showMessageDialog(panel, "Duplicate!");
                     }
                 }
             }
