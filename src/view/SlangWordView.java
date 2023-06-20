@@ -198,6 +198,7 @@ public class SlangWordView extends JFrame {
         SearchSlangWordView p1 = new SearchSlangWordView(dictionary);
         SearchDefinitionView p2 = new SearchDefinitionView(dictionary);
         HistoryView p3 = new HistoryView(historySlangs);
+        //AddSlangView p4 = new AddSlangView(dictionary);
         AddSlangView p4 = new AddSlangView(dictionary);
         CRUDView p5_6 = new CRUDView(dictionary);
         ResetSlangView p7 = new ResetSlangView(dictionary);

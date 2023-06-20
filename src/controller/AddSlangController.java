@@ -40,20 +40,19 @@ public class AddSlangController implements ActionListener {
             } else {
 
                 String[] options = {"Overwrite", "Duplicate", "Cancel"};
-                int choice = JOptionPane.showOptionDialog(panel, "Slang is already existed!",
+                int luaChon = JOptionPane.showOptionDialog(panel, "Slang is already existed!",
                         "Slang existed", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                         options, options[2]);
 
-                switch (choice) {
-                    case 0 -> {
-                        this.rootPanel.dictionary.put(this.panel.slangTextField.getText(), this.panel.meaningTextField.getText());
-                        JOptionPane.showMessageDialog(panel, "Overwritten!");
-                    }
-                    case 1 -> {
-                        this.rootPanel.dictionary.put(this.panel.slangTextField.getText(), this.rootPanel.dictionary.get(this.panel.slangTextField.getText()) + "| " + this.panel.meaningTextField.getText());
-                        JOptionPane.showMessageDialog(panel, "Duplicate!");
-                    }
+                if (luaChon == 0) {
+                    this.rootPanel.dictionary.put(this.panel.slangTextField.getText(), this.panel.meaningTextField.getText());
+                    JOptionPane.showMessageDialog(panel, "Overwritten!");
+                } else if (luaChon == 0) {
+                    this.rootPanel.dictionary.put(this.panel.slangTextField.getText(), this.rootPanel.dictionary.get(this.panel.slangTextField.getText()) + "| " + this.panel.meaningTextField.getText());
+                    JOptionPane.showMessageDialog(panel, "Duplicate!");
                 }
+
+                
             }
         } else {
             System.out.println("2");
