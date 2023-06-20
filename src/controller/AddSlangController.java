@@ -47,7 +47,7 @@ public class AddSlangController implements ActionListener {
                 if (luaChon == 0) {
                     this.rootPanel.dictionary.put(this.panel.slangTextField.getText(), this.panel.meaningTextField.getText());
                     JOptionPane.showMessageDialog(panel, "Overwritten!");
-                } else if (luaChon == 0) {
+                } else if (luaChon == 1) {
                     this.rootPanel.dictionary.put(this.panel.slangTextField.getText(), this.rootPanel.dictionary.get(this.panel.slangTextField.getText()) + "| " + this.panel.meaningTextField.getText());
                     JOptionPane.showMessageDialog(panel, "Duplicate!");
                 }
